@@ -1,3 +1,5 @@
+![alt tag](http://www.martinerlic.com/parsebars/images/parsebars-banner.png)
+
 # Parsebars.js
 Parsebars.js provides a boilerplate MVC template for creating a web application using Handlebars.js and the Parse JavaScript SDK.
 
