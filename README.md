@@ -24,7 +24,7 @@ The complete database schema is documented below. Without configuring the follow
 <a name="classes"/>
 ### 2.1 Classes
 
-For each Class, I've excluded the auto-generated default Parse columns, i.e. objectId, createdAt, updatedAt, ACL, etc. due to redundancy. Also, I've provided examples of object data for demonstration purposes only. If you are relatively unfamiliar with software development or have little experience with NoSQL databases in particular, you should be aware that you only need to create the columns with their provided titles, and should not by any means include a sample object like I have below. Doing so could mess up your application; this data will be generated on its own when users start interacting with your application.
+For each Class, I've excluded the auto-generated default Parse columns, i.e. objectId, createdAt, updatedAt, ACL, etc. due to redundancy.
 
 * User
 
@@ -35,4 +35,3 @@ For each Class, I've excluded the auto-generated default Parse columns, i.e. obj
 
 | username (String) | name (String) | bio (String) | websiteLink (String) | profilePicture (File) | phoneNumber (String)
 |--------------------------|-----------------|-------------------|--------------|----------------------|---------------|----------------|-------------------------------------|-----------------|-----------------------|----------------------|-------------------|----------------|
-| lumberg | Lumberg | Just make sure you go ahead and put that new cover letter on all your TPS reports next time, mmkay? | https://www.youtube.com/watch?v=kVmC0ktznNo | https://memecrunch.com/image/51621675afa96f32ef000013.jpg?w=400 | 1-800-SLAVE-LABOR |
