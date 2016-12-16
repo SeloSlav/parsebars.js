@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+	<title>Parsebars.js - A boilerplate MVC template for creating a web application using Handlebars.js and the Parse JavaScript SDK</title>
+
+	<!-- Animations -->
+	<link rel="stylesheet" href="https://s.mlcdn.co/animate.css">
+
+	<!-- Icons -->
+	<link rel="icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+	<!-- Google Fonts -->
+	<link href='//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+
+	<!-- Materialize Icons  -->
+	<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- Typicons -->
+	<link rel='stylesheet' href='typicons.font-master/src/font/typicons.min.css' />
+
+	<!-- JQuery -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+	<script src="js/jquery.lazyload.js"></script>
+
+	<!-- Materialize JS -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+	<!-- Style -->
+	<link href="css/materialize.css" rel="stylesheet"/>
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+	<!-- Compare Generator -->
+	<script>
+		Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+			switch (operator) {
+				case '==':
+				return (v1 == v2) ? options.fn(this) : options.inverse(this);
+				case '===':
+				return (v1 === v2) ? options.fn(this) : options.inverse(this);
+				case '<':
+				return (v1 < v2) ? options.fn(this) : options.inverse(this);
+				case '<=':
+				return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+				case '>':
+				return (v1 > v2) ? options.fn(this) : options.inverse(this);
+				case '>=':
+				return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+				case '&&':
+				return (v1 && v2) ? options.fn(this) : options.inverse(this);
+				case '||':
+				return (v1 || v2) ? options.fn(this) : options.inverse(this);
+				default:
+				return options.inverse(this);
+			}
+		});
+	</script>
+
+</head>
+<body>
+
+	<!-- Master Template -->
+	<script id="master-tpl" type="text/x-handlebars-template">
+
+		<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+			<!-- $sidebar -->
+		</div>
+
+		<div class="container">
+			<div class="section">
+
+				<div class="main-container">
+					<!-- $container -->
+
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer class="page-footer indigo darken-2">
+			<div class="container">
+				<div class="row">
+					<div class="col s12 m12 l12">
+					</div>
+				</div>
+			</div>
+
+			<div class="footer-copyright">
+				<div class="container">
+					Parsebars.js <span class="typcn typcn-social-github" style="font-size: 20px; color: #fff;"></span> Fork our <a href="https://github.com/santafebound/parsebars.js">repository</a> on GitHub.
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+</script>
+
+<script id="blogs-tpl" type="text/x-handlebars-template">
+	<h3 class="center" id="top">Welcome {{name}}!</h3>
+	<div class="row">
+		<div class="blog-post">
+
+			{{#each blog}}
+			<a href="#/yeet/{{objectId}}" style="color: #000;">
+			<div class="col s12 m12 l12 object-hover">
+
+				<table>
+					<tr>
+						<td width="60px">
+							<!-- Profile Picture -->
+							<div class="fade-in one">
+								<a href="#/{{author.username}}"><img class="hvr-pulse-grow profilePicture" onError="this.src='images/ic_anonymous.png';" src="{{secureUrl author.profilePicture.url}}" style="vertical-align: middle; width: 60px; height: 60px; border-radius: 133px;" id="profilePicture"></a>
+							</div>
+						</td>
+						<td>
+							<!-- Content -->
+							<div>
+								<a style="color: #000;" href="#/{{author.username}}">{{author.name}}</a>&nbsp;<a style="color: #9699a6;" href="#/{{author.username}}">@{{author.username}}</a>
+								<br>
+								{{notificationText}}
+								<br>
+								<span class="typcn typcn-arrow-back" style="color: #000; font-size: 20px;"></span> {{replyCount}} &nbsp; <span class="typcn typcn-heart" style="color: red; font-size: 20px;"></span> {{likeCount}}
+							</div>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+			</a>
+			{{/each}}
+
+		</div>
+	</div>
+
+			<!-- <center class="loading-image">
+						<img class="hide loading-image" src="images/rolling.gif">
+					</center> -->
+
+					<script>
+						$("div.lazy").lazyload({
+							effect : "fadeIn"
+						});
+						<{{!}}/script>
+
+					</script>
+
+					<script id="blog-tpl" type="text/x-handlebars-template">
+
+						<div class="row">
+
+							<div class="col s12 m12 l12">
+
+								<div>
+
+									<table>
+										<tr>
+											<td style="width: 64px;">
+												<a href="#/{{author.username}}"><img class="hvr-pulse-grow profilePicture" onError="this.src='images/ic_anonymous.png';" src="{{secureUrl author.profilePicture.url}}" id="profilePicture"></div></a>
+											</td>
+											<td>
+												<a href="#/{{author.username}}">{{author.name}}</a>&nbsp;<a href="#/{{author.username}}">@{{author.username}}</a><br>
+												<p>{{notificationText}}</p>
+											</td>
+										</tr>
+									</table>
+
+									<div>
+										<span class="like-count-container" style="cursor: pointer" title="{{likeTitle}}" data-proceed="{{likeProceed}}" data-blog-id="{{objectId}}"><span class="typcn typcn-heart hvr-pulse-grow" style="color: red; font-size: 30px;"></span> {{likesCount}}</span>
+										<span class="download-count-container" style="cursor: pointer" title="{{downloadTitle}}" data-proceed="{{downloadProceed}}" data-blog-id="{{objectId}}"><span class="typcn typcn-download-outline hvr-pulse-grow" style="font-size: 20px;"></span> {{downloadCount}}</span>
+									</div>
+								</div>
+
+							</div>
+
+							{{#if loggedIn}}
+							<div class="blog-sec">
+								<br><br><h5>Leave a Comment</h5>
+								<form class="form-comment" role="form">
+									<div class="form-group">
+										<textarea placeholder="Your comment here" name="content" class="form-control materialize-textarea" rows="3" id="comment-content"></textarea>
+										<label for="comment-content">Comment</label><br><br>
+									</div>
+									<button type="submit" class="btn btn-default">Submit</button>
+								</form>
+							</div>
+							{{/if}}
+
+							{{#if comment}}
+							<div class="blog-sec">
+								<br><br><h2>Comments</h2><br>
+								<ul class="blog-comments list-unstyled">
+									{{#each comment}}
+									<li class="blog-comment">
+										<table>
+											<tr>
+												<td width="7.5%" style="vertical-align: middle;">
+													<a href="#/{{author.username}}"><img onError="this.src='images/ic_anonymous.png';" src="{{secureUrl author.profilePicture.url}}" class="profilePictureComments hvr-pulse-grow" id="profilePicture"></a>
+												</td>
+												<td width="auto" style="vertical-align: middle;">
+
+													<div><a href="#/{{author.username}}">{{author.username}}</a></div>
+													<div>{{comment}}</div>
+													<div style="color: #a3a3a3;">{{time}}</div>
+
+												</td>
+											</tr>
+										</table>
+
+
+										<hr>
+									</li>
+									{{/each}}
+								</ul>
+							</div>
+							{{/if}}
+
+							<script src="js/view.min.js?auto"></script>
+
+						</script>
+
+						<script id="nav-categories-tpl" type="text/x-handlebars-template"></script>
+
+						<!-- Edit My Profile View -->
+						<script id="edit-my-profile-tpl" type="text/x-handlebars-template">
+							<form class="profile-details-edit" id="profile-details-edit" role="form">
+
+								<nav>
+									<div class="nav-wrapper blue">
+										<div class="col s12" style="margin-left: 10px;">
+											<a href="#/{{username}}" class="breadcrumb"><a href="#/admin">Back to My Profile</a></a>
+											<span class="breadcrumb">Edit My Profile</span>
+										</div>
+									</div>
+								</nav><br><br>
+
+								<input type="text" id="fullName" name="name" maxLength="20" class="form-control" placeholder="Full name" value="{{name}}" autofocus="">
+								<label for="name">Full Name</label><br><br>
+
+								<input type="text" id="editUsername" name="username" maxLength="20" class="form-control" placeholder="Username" value="{{username}}" disabled>
+								<label for="username">Username</label><br><br>
+
+								<textarea type="text" id="bio" name="bio" class="form-control materialize-textarea" placeholder="A little about yourself" autofocus="" maxLength="288">{{bio}}</textarea>
+								<label for="bio">A little about yourself</label><br><br>
+
+								<input type="text" id="editEmail" name="email" maxLength="20" class="form-control" placeholder="Email" value="{{email}}" disabled>
+								<label for="bio">Your email address</label><br><br>
+
+								<input type="text" id="phoneNumber" name="phone-number" maxLength="20" class="form-control" placeholder="Your phone number" value="{{Phone}}" autofocus="">
+								<label for="bio">Your phone number</label>
+
+								<br><br><p><button class="btn btn-lg btn-primary btn-block" type="submit">Submit Changes</button></p>
+
+							</form>
+						</script>
+
+						<!-- My Profile -->
+						<script id="admin-tpl" type="text/x-handlebars-template">
+
+							<hr>
+
+							<div class="row">
+								<div class="blog-post">
+
+									{{#each blog}}
+									<div class="col s12 m6 l4">
+										<div class="icon-block">
+
+											<p><center><div class="hvr-pop fade-in one"><a href="#/buy/{{objectId}}"><img class="hvr-pop lazy" src="{{secureUrl image.url}}"></a></div>
+												<div><span class="typcn typcn-arrow-back" style="color: #000; font-size: 20px;"></span> {{replyCount}} &nbsp; <span class="typcn typcn-heart" style="color: red; font-size: 20px;"></span> {{likeCount}}
+													<div><a href="#/{{username}}">{{name}}</a> &nbsp; <a href="#/{{username}}">{{username}}</a></div><br>
+												</center>
+											</p>
+										</div>
+									</div>
+									{{/each}}
+								</div>
+							</div>
+
+							<!-- <center class="loading-image">
+								<img src="images/rolling.gif">
+							</center> -->
+
+							<script>
+								$("div.lazy").lazyload({
+									effect : "fadeIn"
+								});
+								<{{!}}/script>
+							</script>
+
+							<!-- Welcome Template -->
+							<script id="welcome-tpl" type="text/x-handlebars-template">
+								<center>
+
+									<div style="width: 128px; height: 128px; background-image: url('images/ic_anonymous.png'); background-position: center center; background-repeat: no-repeat; background-size: cover;">
+										{{#if blogAdmin}}
+										<p><a href="#/changeprofilepic"><img class="hvr-pulse-grow profilePicture" onError="this.src='images/ic_anonymous.png';" src="{{secureUrl profilePicture.url}}" style="vertical-align: middle; width: 128px; height: 128px; border-radius: 133px;" id="profilePicture"></a></p>
+										{{else}}
+										<p><img onError="this.src='images/ic_anonymous.png';" src="{{secureUrl profilePicture.url}}" style="vertical-align: middle; width: 128px; height: 128px; border-radius: 133px;" id="profilePicture"></p>
+										{{/if}}
+									</div><br>
+
+									<a href="#/{{username}}" style="font-size: 22px;">{{name}}</a><br>
+									<a href="#/{{username}}" class="author-username" style="font-size: #16px; color: #a3a3a3;">{{username}}</a><br>
+									{{#if blogAdmin}}
+									<p><a class="profile-edit" href="#/editprofile"><span class="typcn typcn-edit" style="font-size: 26px;"></span>&nbsp;Edit Profile</a></p>
+									{{/if}}
+									<span style="font-size: 16px; color: #000;">{{bio}}</span><br>
+									<span style="font-size: 16px; color: #000;"><a href="https://{{websiteLink}}">{{websiteLink}}</a></span>
+
+ 			<!--{{#if blogAdmin}}
+			<a class="btn btn-lg btn-primary btn-block blue" style="width: 200px;" href="#/add"><span class="typcn typcn-brush" style="font-size: 20px;"></span>&nbsp;Create</a>
+			{{/if}} -->
+		</center>
+
+		<!-- <hr> -->
+
+		<div class="row">
+			<div class="blog-post">
+
+				{{#each blog}}
+				<div class="col s12 m12 l12">
+
+					<table>
+						<tr>
+							<td width="60px">
+								<!-- Profile Picture -->
+								<div class="fade-in one">
+									<a href="#/buy/{{objectId}}"><img class="hvr-pulse-grow profilePicture" onError="this.src='images/ic_anonymous.png';" src="{{secureUrl author.profilePicture.url}}" style="vertical-align: middle; width: 60px; height: 60px; border-radius: 133px;" id="profilePicture"></a>
+								</div>
+							</td>
+							<td>
+								<!-- Content -->
+								<div>
+									<a style="color: #000;" href="#/{{author.username}}">{{author.name}}</a>&nbsp;<a style="color: #a3a3a3;" href="#/{{author.username}}">@{{author.username}}</a>
+									<br>
+									{{notificationText}}
+									<br>
+									<span class="typcn typcn-arrow-back" style="color: #000; font-size: 20px;"></span> {{replyCount}} &nbsp; <span class="typcn typcn-heart" style="color: red; font-size: 20px;"></span> {{likeCount}}
+								</div>
+							</td>
+						</tr>
+					</table>
+
+				</div>
+				{{/each}}
+
+			</div>
+
+			<!-- <center >
+				<img src="images/rolling.gif" class="loading-image">
+			</center> -->
+
+			<script>
+				$("div.lazy").lazyload({
+					effect : "fadeIn"
+				});
+				<{{!}}/script>
+
+			</script>
+
+			<!-- Change Profile Picture Template -->
+			<script id="change-profile-pic-tpl" type="text/x-handlebars-template">
+
+				<nav>
+					<div class="nav-wrapper blue">
+						<div class="col s12" style="margin-left: 10px;">
+							<a href="#!" class="breadcrumb"><a href="#/admin">Back to My Profile</a></a>
+							<span class="breadcrumb">Change Profile Picture</span>
+						</div>
+					</div>
+				</nav><br><br>
+
+				<center>
+
+					<div style="width: 256px; height: 256px; background-image: url('images/ic_anonymous.png'); background-position: center center; background-repeat: no-repeat; background-size: cover;">
+						<p><a class="view" href="{{secureUrl profilePicture.url}}"><img class="hvr-pulse-grow" onError="this.src='images/ic_anonymous.png';" src="{{secureUrl profilePicture.url}}" style="border: 2px solid #efefef; vertical-align: middle; width: 256px; height: 256px; border-radius: 133px;" id="profilePicture"></a></p>
+					</div>
+
+					<form class="pic-add" id="pic-add" role="form">
+
+						<div class="file-field input-field">
+							<div class="btn">
+								<span>Select an Image</span>
+								<input type="file" id="profilePhotoFileUpload" name="profilePhotoFileUpload" class="form-control" required="" autofocus="">
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text">
+							</div>
+						</div>
+
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Upload New Profile Picture</button><br>
+					</form>
+
+				</center>
+
+				<script src="js/view.min.js?auto"><{{!}}/script>
+
+				</script>
+
+
+				<!-- Log In Template -->
+				<script id="login-tpl" type="text/x-handlebars-template">
+					<form class="form-signin" role="form">
+						<h2 class="form-signin-heading light-blue-text">Please sign in</h2>
+						<input type="text" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+						<input type="password" name="password" class="form-control" placeholder="Password" required="">
+						<button class="btn btn-lg btn-primary btn-block" type="submit" id="loginsubmit">Sign in</button>
+						<p><a href="#/reset">Forgot your password?</a></p><br>
+						Don&#39;t have an account? <a href="#/register">Sign up!</a>
+					</form>
+				</script>
+
+
+				<!-- Reset Password Template -->
+				<script id="reset-tpl" type="text/x-handlebars-template">
+					<form class="form-reset" role="form">
+						<h2 class="form-signin-heading light-blue-text">Forgot your password?</h2>
+						<p>Enter the email address associated with your account, and we will email you a link to reset your password.</p><br>
+
+						<input type="text" name="email" class="validate form-control" data-success="Your password reset request has been sent to the provided email address." placeholder="Email" required="true" autofocus="">
+						<label for="email">Your email</label>
+
+						<br><br><button class="btn btn-lg btn-primary btn-block" type="submit">Send reset link</button>
+					</form>
+				</script>
+
+
+				<!-- Write Template -->
+				<script id="write-tpl" type="text/x-handlebars-template">
+
+					<nav>
+						<div class="nav-wrapper blue">
+							<div class="col s12" style="margin-left: 10px;">
+								<a href="#/" class="breadcrumb">Back to Feed</a>
+								<span class="breadcrumb">Yeeet!</span>
+							</div>
+						</div>
+					</nav><br><br>
+
+
+					<form class="form-write" role="form">
+						
+						
+						<div class="form-group">
+							<textarea name="content" id="content" autofocus="" placeholder="Yeet something ints you monk!" class="form-control materialize-textarea" length="140" rows="20">{{content}}</textarea>
+							<label for="content">Yeet</label>
+						</div>
+						<br/><br/>
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Send Yeet</button>
+						<br/><br/>
+						<div id="lastYeet"></div>
+					</form>
+				</script>
+
+
+				<!-- Categories Select View -->
+				<script id="select-categories-tpl" type="text/x-handlebars-template">
+					{{#each category}}
+					<option value="{{objectId}}" {{#if selected}}selected{{/if}}>{{name}}</option>
+					{{/each}}
+				</script>
+
+
+				<!-- Register View -->
+				<script id="register-tpl" type="text/x-handlebars-template">
+					<form class="form-signin user-add" id="user-add" role="form">
+						<h4 class="form-signin-heading light-blue-text">Create an account</h4>
+						<input type="text" id="username" name="username" class="form-control" placeholder="Username" maxLength="15" required="" autofocus="">
+						<input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+						<input type="text" id="email" name="email" class="form-control" placeholder="Email" required="" autofocus="">
+						<input type="text" id="name" name="name" class="form-control" placeholder="Your Name (Optional)" maxLength="20" autofocus="">
+						<p><button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button></p>
+						Already have an account? <a href="#/admin">Log in!</a></p>
+					</form>
+				</script>
+
+
+				<!-- Logged Out Menu -->
+				<script id="menu-logged-out-tpl" type="text/x-handlebars-template">
+
+					<nav class="nav-down white" role="navigation">
+
+						<div class="nav-wrapper container blog-nav-item hide-on-med-and-down">
+
+							<a id="logo-container" href="" class="brand-logo"><div class="nav-hover-1">Parsebars.js</div></a>
+							<ul class="right hide-on-med-and-down">
+								<li><a class="blog-nav-item-sign-up nav-hover-3" href="#/register">Sign Up</a></li>
+								<li><a class="blog-nav-item nav-hover-3" href="#/login">Login</a></li>
+								<li><a class="blog-nav-item nav-hover-github" href="https://www.github.com/santafebound/parsebars.js" target="_blank"><span class="typcn typcn-social-github" style="font-size: 30px;"></span></a></li>
+							</ul>
+
+						</div>
+
+						<a href="#!" style="z-index: 6000;" class="nav-mobile brand-logo show-on-small"><div class="nav-hover-1"><span class="typcn typcn-th-menu-outline" style="font-size: 60px;"></span></div></a>
+
+						<div>
+							<br>
+							<ul class="show-on-small">
+								<a class="blog-nav-item" href="#/"><h1><center>Home</center></h1></a>
+								<a class="blog-nav-item" href="#/register"><h1><center>Sign Up</center></h1></a>
+								<a class="blog-nav-item" href="#/login"><h1><center>Login</center></h1></a>
+							</ul>
+						</div>
+						<a onClick="#!" style="cursor: pointer; z-index: 6000;" class="nav-mobile brand-logo show-on-small"><div id="1" class="nav-hover-1"><span class="typcn typcn-delete-outline" style="font-size: 60px;"></span></div></a>
+
+					</nav>
+
+					<div class="fade-in one">
+						<div class="section no-pad-bot lazy" id="index-banner" style="background-image: url('images/background-header.png');">
+							<div class="container">
+								<br><br>
+								<h3 class="header center white-text" style="text-shadow: #000 2px 1px 1px;">
+								<span style="background-color: rgba(0,0,0,.5);">Build Your Next Web App</span><br>
+									<span style="background-color: rgba(0,0,0,.5);">With <a href="https://github.com/wycats/handlebars.js" target="_blank">Handlebars.js</a> and <a href="https://github.com/ParsePlatform/Parse-SDK-JS" target="_blank">Parse</a></span>
+									</h3>
+									<h5 class="row center" style="color: #fff;"></h5>
+									<br>
+									<div class="row center">
+										<h5 class="header col s12 light" style="color: #fff; text-shadow: #000 2px 1px 1px">
+										<span style="background-color: rgba(0,0,0,.5);">Sign Up Below to Give It a Spin!</span>
+										</h5>
+									</div>
+									<br><br>
+								</div>
+							</div>
+						</div>
+
+						<script>
+							$("div.lazy").lazyload({
+								effect : "fadeIn"
+							});
+							<{{!}}/script>
+
+							<script>
+		    var previousScroll = 0, // previous scroll position
+        menuOffset = 116, // height of menu (once scroll passed it, menu is hidden)
+        detachPoint = 650, // point of detach (after scroll passed it, menu is fixed)
+        hideShowOffset = 6; // scrolling value after which triggers hide/show menu
+
+    // on scroll hide/show menu
+    $(window).scroll(function() {
+    	if ($('nav').hasClass('expanded')) {
+        // do nothing; main navigation is being shown
+    } else {
+        var currentScroll = $(this).scrollTop(), // gets current scroll position
+            scrollDifference = Math.abs(currentScroll - previousScroll); // calculates how fast user is scrolling
+
+        // if scrolled past menu
+        if (currentScroll > menuOffset) {
+          // if scrolled past detach point add class to fix menu
+          if (currentScroll > detachPoint) {
+          	$('nav').addClass('detached');
+          }
+
+          // if scrolling faster than hideShowOffset hide/show menu
+          if (scrollDifference >= hideShowOffset) {
+          	if (currentScroll > previousScroll) {
+              // scrolling down; hide menu
+              $('nav').addClass('invisible');
+          } else {
+              // scrolling up; show menu
+              $('nav').removeClass('invisible');
+          }
+      }
+  } else {
+          // only remove “detached” class if user is at the top of document (menu jump fix)
+          if (currentScroll <= 0){
+          	$('nav').removeClass();
+          }
+      }
+
+        // if user is at the bottom of document show menu
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        	$('nav').removeClass('invisible');
+        }
+
+        // replace previous scroll position with new one
+        previousScroll = currentScroll;
+    }
+})
+
+    // shows/hides navigation’s popover if class "expanded"
+    $('nav').click(function() {
+    	/*showHideNav();*/
+    })
+
+    // shows/hides navigation’s popover if class "expanded" while on mobile
+    $('.nav-mobile').click(function() {
+    	showHideNav();
+    })
+
+    $('.blog-nav-item').click(function() {
+    	hideNav();
+    })
+
+    // clicking anywhere inside navigation or heading won’t close navigation’s popover
+    $('#navigation').click(function(event){
+    	event.stopPropagation();
+    })
+
+    // checks if navigation’s popover is shown
+    function showHideNav() {
+    	if ($('nav').hasClass('expanded')) {
+    		hideNav();
+    	} else {
+    		showNav();
+    	}
+    }
+
+    // shows the navigation’s popover
+    function showNav() {
+    	$('nav').removeClass('invisible').addClass('expanded');
+    	$('#container').addClass('blurred');
+      window.setTimeout(function(){$('body').addClass('no_scroll');}, 200); // Firefox hack. Hides scrollbar as soon as menu animation is done
+      $('#navigation a').attr('tabindex', ''); // links inside navigation should be TAB selectable
+  }
+
+    // hides the navigation’s popover
+    function hideNav() {
+    	$('#container').removeClass('blurred');
+      window.setTimeout(function(){$('body').removeClass();}, 10); // allow animations to start before removing class (Firefox)
+      $('nav').removeClass('expanded');
+      $('#navigation a').attr('tabindex', '-1'); // links inside hidden navigation should not be TAB selectable
+      $('.icon').blur(); // deselect icon when navigation is hidden
+  }
+
+    // keyboard shortcuts
+    $('body').keydown(function(e) {
+      // menu accessible via TAB as well
+      if ($("nav .icon").is(":focus")) {
+        // if ENTER/SPACE show/hide menu
+        if (e.keyCode === 13 || e.keyCode === 32) {
+        	showHideNav();
+        	e.preventDefault();
+        }
+    }
+
+      // if ESC show/hide menu
+      //if (e.keyCode === 27) {
+      //	showHideNav();
+      //}
+  })
+    <{{!}}/script> 
+
+</script>
+
+<!-- Logged In Menu -->
+<script id="menu-logged-in-tpl" type="text/x-handlebars-template">
+
+	<nav class="nav-down white" role="navigation">
+
+		<div class="nav-wrapper container blog-nav-item hide-on-med-and-down">
+
+			<a id="logo-container" href="" class="brand-logo"><div class="nav-hover-1">ParseBars.js</div></a>
+			<ul class="right hide-on-med-and-down">
+
+				<li><a class="blog-nav-item" href="#/admin"><span id="username" class="menu-item-link">{{#if name}}{{name}}{{else}}{{username}}{{/if}}</span>&nbsp;&nbsp;<img onError="this.src='images/ic_anonymous.png';" src="{{secureUrl profilePicture.url}}" class="profilePicture hvr-pulse-grow" id="profilePicture"></a></li>
+				<li><a class="blog-nav-item nav-hover-3" href="#/logout">Log out</a></li>
+
+			</ul>
+
+		</div>
+
+		<a href="#!" style="z-index: 6000;" class="nav-mobile brand-logo show-on-small"><div class="nav-hover-1"><span class="typcn typcn-th-menu-outline" style="font-size: 60px;"></span></div></a>
+
+		<div>
+			<br>
+			<ul class="show-on-small">
+				<a class="blog-nav-item" href="#/"><h1><center>Home</center></h1></a>
+				<a class="blog-nav-item" href="#/admin"><h1><center>My Profile</center></h1></a>
+			</ul>
+		</div>
+		<a onClick="#!" style="cursor: pointer; z-index: 6000;" class="nav-mobile brand-logo show-on-small"><div id="1" class="nav-hover-1"><span class="typcn typcn-delete-outline" style="font-size: 60px;"></span></div></a>
+
+	</nav>
+
+	<div class="fade-in one">
+		<div class="section no-pad-bot lazy" id="index-banner" style="background-image: url('images/background-header.png');">
+			<div class="container" style="height: 50px;">
+
+
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$("div.lazy").lazyload({
+			effect : "fadeIn"
+		});
+		<{{!}}/script>
+
+		<script>
+
+			/*var timeout;
+			$("#profilePicture").hover(function () {
+				clearTimeout(timeout);
+				$("#nav_menu").slideDown(0);
+			}, function () {
+				timeout = setTimeout(function(){
+					$("#nav_menu").slideUp(0);
+				},250);
+			});
+
+			$('.dropDownLink').click( function() {
+				$('#nav_menu').slideUp();
+			});*/
+
+		    var previousScroll = 0, // previous scroll position
+        menuOffset = 116, // height of menu (once scroll passed it, menu is hidden)
+        detachPoint = 650, // point of detach (after scroll passed it, menu is fixed)
+        hideShowOffset = 6; // scrolling value after which triggers hide/show menu
+
+    // on scroll hide/show menu
+    $(window).scroll(function() {
+    	if ($('nav').hasClass('expanded')) {
+        // do nothing; main navigation is being shown
+    } else {
+        var currentScroll = $(this).scrollTop(), // gets current scroll position
+            scrollDifference = Math.abs(currentScroll - previousScroll); // calculates how fast user is scrolling
+
+        // if scrolled past menu
+        if (currentScroll > menuOffset) {
+          // if scrolled past detach point add class to fix menu
+          if (currentScroll > detachPoint) {
+          	$('nav').addClass('detached');
+          }
+
+          // if scrolling faster than hideShowOffset hide/show menu
+          if (scrollDifference >= hideShowOffset) {
+          	if (currentScroll > previousScroll) {
+              // scrolling down; hide menu
+              $('nav').addClass('invisible');
+          } else {
+              // scrolling up; show menu
+              $('nav').removeClass('invisible');
+          }
+      }
+  } else {
+          // only remove “detached” class if user is at the top of document (menu jump fix)
+          if (currentScroll <= 0){
+          	$('nav').removeClass();
+          }
+      }
+
+        // if user is at the bottom of document show menu
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        	$('nav').removeClass('invisible');
+        }
+
+        // replace previous scroll position with new one
+        previousScroll = currentScroll;
+    }
+})
+
+    // shows/hides navigation’s popover if class "expanded"
+    $('nav').click(function() {
+    	/*showHideNav();*/
+    })
+
+    // shows/hides navigation’s popover if class "expanded" while on mobile
+    $('.nav-mobile').click(function() {
+    	showHideNav();
+    })
+
+    $('.blog-nav-item').click(function() {
+    	hideNav();
+    })
+
+    // clicking anywhere inside navigation or heading won’t close navigation’s popover
+    $('#navigation').click(function(event){
+    	event.stopPropagation();
+    })
+
+    // checks if navigation’s popover is shown
+    function showHideNav() {
+    	if ($('nav').hasClass('expanded')) {
+    		hideNav();
+    	} else {
+    		showNav();
+    	}
+    }
+
+    // shows the navigation’s popover
+    function showNav() {
+    	$('nav').removeClass('invisible').addClass('expanded');
+    	$('#container').addClass('blurred');
+      window.setTimeout(function(){$('body').addClass('no_scroll');}, 200); // Firefox hack. Hides scrollbar as soon as menu animation is done
+      $('#navigation a').attr('tabindex', ''); // links inside navigation should be TAB selectable
+  }
+
+    // hides the navigation’s popover
+    function hideNav() {
+    	$('#container').removeClass('blurred');
+      window.setTimeout(function(){$('body').removeClass();}, 10); // allow animations to start before removing class (Firefox)
+      $('nav').removeClass('expanded');
+      $('#navigation a').attr('tabindex', '-1'); // links inside hidden navigation should not be TAB selectable
+      $('.icon').blur(); // deselect icon when navigation is hidden
+  }
+
+    // keyboard shortcuts
+    $('body').keydown(function(e) {
+      // menu accessible via TAB as well
+      if ($("nav .icon").is(":focus")) {
+        // if ENTER/SPACE show/hide menu
+        if (e.keyCode === 13 || e.keyCode === 32) {
+        	showHideNav();
+        	e.preventDefault();
+        }
+    }
+
+      // if ESC show/hide menu
+      //if (e.keyCode === 27) {
+      //	showHideNav();
+      //}
+  })
+    <{{!}}/script> 
+</script>
+
+<!-- Javascript -->
+<script src="js/parse-1.2.19.js"></script>
+<script src="js/blog.js"></script>
+
+</body>
+</html>
