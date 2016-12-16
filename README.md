@@ -1,1 +1,1 @@
-# handlebars-parse-boilerplate
+# parsebars.js
