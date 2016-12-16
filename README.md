@@ -10,7 +10,8 @@ Parsebars.js provides a boilerplate MVC template for creating a web application 
 * [3.0 Database Schema](#schema)
   * [3.1 Classes](#classes)
     * [3.1.3 User](#user)
-* [4.0 License](#license)
+* [4.0 Third-Party Libraries](#libs)
+* [5.0 License](#license)
 
 <hr>
 
@@ -71,8 +72,18 @@ For each Class, I've excluded the auto-generated default Parse columns, i.e. obj
 
 <hr>
 
+<a name="libs"/>
+## 4.0 Third Party Libraries
+
+The following Third Party Libraries are used in Parsebars.js:
+
+- **MaterialDrawer** by mikepenz: https://github.com/mikepenz/MaterialDrawer
+- **Parse-SDK-JS** by ParsePlatform: https://github.com/ParsePlatform/Parse-SDK-JS
+
+<hr>
+
 <a name="license"/>
-## 4.0 License
+## 5.0 License
 
 Copyright 2016 Hypercycle, Inc.
 
