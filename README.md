@@ -13,7 +13,7 @@ Simply open **blog.js** and change the configuration values to our own Applicati
     Parse.initialize(
         'x0rtG9s535J8ExWWJUXi8WO19C5xHcfDDef68Epm',
         'qX2sBdcEztbNQ9l8D0EZKdq1Suuopdrww310ti5x');
-    Parse.serverURL = 'https://parseapi.back4app.com
+    Parse.serverURL = 'https://parseapi.back4app.com';
  ```
 
 <a name="schema"/>
@@ -31,7 +31,7 @@ For each Class, I've excluded the auto-generated default Parse columns, i.e. obj
 <hr>
 
 <a name="user"/>
-#### 3.1.3 User
+#### 2.1.0 User
 
 | username (String) | name (String) | bio (String) | websiteLink (String) | profilePicture (File) | phoneNumber (String)
 |--------------------------|-----------------|-------------------|--------------|----------------------|---------------|----------------|-------------------------------------|-----------------|-----------------------|----------------------|-------------------|----------------|
