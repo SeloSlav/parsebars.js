@@ -10,7 +10,7 @@ Parsebars.js provides a boilerplate MVC template for creating a web application 
 * [3.0 Database Schema](#schema)
   * [3.1 Classes](#classes)
     * [3.1.3 User](#user)
-* [7.0 License](#license)
+* [4.0 License](#license)
 
 <hr>
 
@@ -68,3 +68,22 @@ For each Class, I've excluded the auto-generated default Parse columns, i.e. obj
 
 | username (String) | name (String) | bio (String) | websiteLink (String) | profilePicture (File) | phoneNumber (String)
 |--------------------------|-----------------|-------------------|--------------|----------------------|---------------|----------------|-------------------------------------|-----------------|-----------------------|----------------------|-------------------|----------------|
+
+<hr>
+
+<a name="license"/>
+## 4.0 License
+
+Copyright 2016 Hypercycle, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
