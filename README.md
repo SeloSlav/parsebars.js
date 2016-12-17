@@ -79,7 +79,7 @@ For each Class, I've excluded the auto-generated default Parse columns, i.e. obj
 
 The following Third Party Libraries are used in Parsebars.js:
 
-- **MaterialDrawer** by mikepenz: https://github.com/mikepenz/MaterialDrawer
+- **handlebars.js** by wycats: https://github.com/handlebars.js
 - **Parse-SDK-JS** by ParsePlatform: https://github.com/ParsePlatform/Parse-SDK-JS
 
 <hr>
