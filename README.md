@@ -20,7 +20,9 @@ Parsebars.js — An MVC boilerplate for creating web applications with Handlebar
 <a name="vision"/>
 ## 0.0 Vision
 
-I created Parsebars.js to save time for developers and entrepreneurs that don't want to spend hundreds of hours building a server before attaining product-market fit for their new web applications. Parsebars.js runs exclusively in the Cloud, making your back-end extremely easy to launch.
+I created Parsebars.js to save time for developers and entrepreneurs that don't want to spend hundreds of hours building a server before attaining product-market fit for their new web applications. Your Parsebars.js backend runs in the Cloud, making it extremely easy to launch your data-driven app. Installation takes less than 5 minutes. 
+
+The sample app includes user sign up, log in, password reset, a configurable user profile and profile picture, a navigation bar that changes based on whether the user is signed in or not, and a writable collection of blog post objects in the main feed. 
 
 <hr>
 
