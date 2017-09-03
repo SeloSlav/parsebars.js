@@ -74,7 +74,7 @@ For each Class, I've excluded the auto-generated default Parse columns, i.e. obj
 
 | username (String) | name (String) | bio (String) | websiteLink (String) | profilePicture (File) | phoneNumber (String)
 |--------------------------|-----------------|-------------------|--------------|----------------------|---------------|
-| martin | Martin Erlic | Hello! | www.martinerlic.com | | 123-123-1234 |
+| martin | Martin Erlic | Hello! | www.martinerlic.com | http://www.martinerlic.com/images/martin.jpg | 123-123-1234 |
 
 
 <hr>
