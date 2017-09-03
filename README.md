@@ -18,7 +18,7 @@ Parsebars.js — An MVC boilerplate for creating web applications with Handlebar
 <hr>
 
 <a name="vision">
-## 0.0 Vision
+<h2>0.0 Vision</h2>
 
 I created Parsebars.js to save time for developers and entrepreneurs that don't want to spend hundreds of hours building a server before attaining product-market fit for their new web applications. Your Parsebars.js backend runs in the Cloud, making it extremely easy to launch your data-driven app. Installation takes less than 5 minutes. 
 
@@ -27,22 +27,22 @@ The sample app includes user sign up, log in, password reset, a configurable use
 <hr>
 
 <a name="team">
-## 1.0 Team & Past Contributors
+<h2>1.0 Team & Past Contributors</h2>
 
 * <a href="https://github.com/santafebound/">Martin Erlic</a>
 
 <hr>
 
 <a name="installation">
-## 2.0 Installation & Documentation
+<h2>2.0 Installation & Documentation</h2>
 
 <a name="back4app">
-### 2.1 Back4App Registration
+<h3>2.1 Back4App Registration</h3>
 
 In order to host your own version of Parsebars.js, you will most likely want to create an account at www.back4app.com. Given that Parsebars.js was originally developed with Parse, this means that Back4App is currently one of the few viable free hosting options out-of-box. Back4App is a Cloud BaaS (Back-End as a Service) solution that will host your database initially free of charge (that is, until your query requests reach a specified limit threshold per second). See https://www.back4app.com/pricing for additional pricing information at scale. I've found Back4App to be highly reliable so far, but if you are interested in hosting your own Parse Server elsewhere, there are tons of useful instructions and tutorials online. This article is a good place to start: https://medium.com/@timothy_whiting/setting-up-your-own-parse-server-568ee921333a
 
 <a name="config">
-## 2.2 Application Configuration
+<h3>2.2 Application Configuration</h3>
 
 Simply open **blog.js** and change the configuration values to our own Application Id and Javascript Key, provided to you by Back4App (https://dashboard.back4app.com/ > Core Settings). This is where we connect to Parse. The configuration code will looks like this. The Application Id is the first string and the Javascript Key is the second:
 
@@ -55,12 +55,12 @@ Simply open **blog.js** and change the configuration values to our own Applicati
  ```
 
 <a name="schema">
-## 3.0 Database Schema
+<h2>3.0 Database Schema</h2>
 
 The complete database schema is documented below. Without configuring the following classes and attributes in your own Parse dashboard, downloading the source code probably won't be much help!
 
 <a name="classes">
-### 3.1 Classes
+<h3>3.1 Classes</h3>
 
 For each Class, I've excluded the auto-generated default Parse columns, i.e. objectId, createdAt, updatedAt, ACL, etc. due to redundancy.
 
@@ -69,17 +69,18 @@ For each Class, I've excluded the auto-generated default Parse columns, i.e. obj
 <hr>
 
 <a name="user">
-#### 3.1.1 User
+<h3>3.1.1 User</h3>
 
 
 | username (String) | name (String) | bio (String) | websiteLink (String) | profilePicture (File) | phoneNumber (String)
 |--------------------------|-----------------|-------------------|--------------|----------------------|---------------|
+| martin | Martin Erlic | Hello! | www.martinerlic.com | | 123-123-1234 |
 
 
 <hr>
 
 <a name="libs">
-## 4.0 Third Party Libraries
+<h2>4.0 Third Party Libraries</h2>
 
 The following Third Party Libraries are used in Parsebars.js:
 
@@ -89,7 +90,7 @@ The following Third Party Libraries are used in Parsebars.js:
 <hr>
 
 <a name="license">
-## 5.0 License
+<h2>5.0 License</h2>
 
 Copyright 2016 Hypercycle, Inc.
 
