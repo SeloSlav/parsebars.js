@@ -1,4 +1,4 @@
-![alt tag](http://www.martinerlic.com/parsebars/images/parsebars-banner.png)
+![alt tag](http://www.martinerlic.com/parsebars/images/parsebars-js-splash.png)
 
 # Parsebars.js
 Parsebars.js — An MVC boilerplate for creating web applications with Handlebars.js and the Parse JavaScript SDK.
