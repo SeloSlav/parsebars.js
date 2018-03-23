@@ -92,7 +92,7 @@ The following Third Party Libraries are used in Parsebars.js:
 <a name="license">
 <h2>5.0 License</h2>
 
-Copyright 2016-2018 Martin Erlic, Inc.
+Copyright 2016-2018 Martin Erlic.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
